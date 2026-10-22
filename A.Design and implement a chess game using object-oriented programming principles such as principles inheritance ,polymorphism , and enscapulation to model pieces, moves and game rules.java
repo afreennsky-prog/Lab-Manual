@@ -3,7 +3,7 @@ Program
 import java.util.Scanner;
 
 // ===================== PIECE (Abstraction + Encapsulation) =====================
-// abstract class -> we can never make "new Piece()", only its children (King, Pawn, etc.)
+// ----------------------------- abstract class -> we can never make "new Piece()", only its children (King, Pawn, etc.)----------------------
 abstract class Piece {
     private boolean isWhite;   // encapsulation: private field
     private boolean hasMoved;
@@ -199,7 +199,7 @@ class Board {
         return true;
     }
 
-    // destination must be empty OR hold an enemy piece
+    // ----------------- destination must be empty OR hold an enemy piece -----------------------------
     public static boolean destinationOk(Piece mover, Spot end) {
         return end.isEmpty() || end.getPiece().isWhite() != mover.isWhite();
     }
@@ -227,7 +227,7 @@ class Board {
         return false;
     }
 
-    // try every legal-looking move for a color; if none escapes check -> checkmate
+    // -----------------try every legal-looking move for a color; if none escapes check -> checkmate ----------------------
     public boolean isCheckmate(boolean white) {
         if (!isInCheck(white)) return false;
         for (int y1 = 0; y1 < 8; y1++)
@@ -355,4 +355,3 @@ public class Main {
         new Game().play();
     }
 }
-
